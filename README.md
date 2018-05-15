@@ -48,7 +48,7 @@
 * 安装
 
 ``` bash
-npm i mpvue-wxparse
+npm i mpvue-wxparse-mars
 ```
 
 * 使用
