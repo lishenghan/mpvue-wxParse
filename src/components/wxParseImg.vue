@@ -46,8 +46,13 @@ export default {
       const { imageheight, imageWidth } = recal;
       const { padding } = this.node.attr;
       const { styleStr } = this.node;
-      this.newStyleStr = `${styleStr};height: ${imageheight}px; width: ${imageWidth}px; padding: 0 ${padding}px;`;
+      if (!src.endsWith('.svg')) {
+        this.newStyleStr = `${styleStr};height: ${imageheight}px; width: ${imageWidth}px; padding: 0 ${padding}px;`;
+      } else {
+        this.newStyleStr = `${styleStr}`;
+      }
     },
+
     // 计算视觉优先的图片宽高
     wxAutoImageCal(originalWidth, originalHeight) {
       // 获取图片的原始长宽
