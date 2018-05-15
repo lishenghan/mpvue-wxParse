@@ -59,7 +59,7 @@ function getScreenInfo() {
   return screen;
 }
 
-function html2json(html, customHandler, imageProp) {
+function html2json(html, customHandler, imageProp, imgRoot) {
   // 处理字符串
   html = removeDOCTYPE(html);
   html = trimHtml(html);
@@ -144,7 +144,7 @@ function html2json(html, customHandler, imageProp) {
       // 对img添加额外数据
       if (node.tag === 'img') {
         let imgUrl = node.attr.src;
-        imgUrl = wxDiscode.urlToHttpUrl(imgUrl, placeImgeUrlHttps);
+        imgUrl = wxDiscode.urlToHttpUrl(imgUrl, placeImgeUrlHttps, imgRoot);
         Object.assign(node.attr, imageProp, {
           src: imgUrl || '',
         });

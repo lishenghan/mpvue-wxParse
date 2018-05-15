@@ -182,11 +182,14 @@ function strDiscode(str) {
   str = strOtherDiscode(str);
   return str;
 }
-function urlToHttpUrl(url, rep) {
+function urlToHttpUrl(url, rep, imgRoot) {
   const patt1 = new RegExp('^//');
   const result = patt1.test(url);
   if (result) {
     url = `${rep}:${url}`;
+  }
+  if (!url.startsWith('http')) {
+    url = `${imgRoot}${url}`;
   }
   return url;
 }

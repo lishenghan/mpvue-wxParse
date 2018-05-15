@@ -31,9 +31,10 @@ export default {
       type: String,
       default: '',
     },
+    imgRoot: String,
     noData: {
       type: String,
-      default: '<div style="color: red;">数据不能为空</div>',
+      default: '',
     },
     startHandler: {
       type: Function,
@@ -75,6 +76,7 @@ export default {
         startHandler,
         endHandler,
         charsHandler,
+        imgRoot,
       } = this;
       const parseData = content || noData;
       const customHandler = {
@@ -82,7 +84,7 @@ export default {
         end: endHandler,
         chars: charsHandler,
       };
-      const { nodes, imageUrls } = HtmlToJson(parseData, customHandler, imageProp);
+      const { nodes, imageUrls } = HtmlToJson(parseData, customHandler, imageProp, imgRoot);
       this.imageUrls = imageUrls.map(url => url);
       return nodes;
     },
